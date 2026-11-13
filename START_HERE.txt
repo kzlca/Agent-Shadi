@@ -1,0 +1,51 @@
+AGENT SHADI 1.8.37 — QUICK START
+
+WHAT IT DOES
+Agent Shadi is a local-first application for collecting information from browser-based messaging services and other web sources, extracting structured fields, reviewing results, and exporting datasets. Use built-in source workflows or create reusable connectors for other browser-accessible services.
+
+IMPORTANT COLLECTION RULE
+One collection run = one manually selected source page or channel.
+- Select one source or saved connector.
+- Open its browser session.
+- Manually navigate to the page or conversation you want.
+- Set the requested date range and position the history.
+- Start the run and inspect the reported coverage.
+- Use separate runs for separate pages/channels.
+
+Agent Shadi does not automatically search for channels, open search results, or switch between channels during collection.
+
+START THE APPLICATION
+Linux:   ./run.sh
+macOS:   ./run_macos.command
+Windows: run_windows.bat
+
+The launcher creates a local Python virtual environment, installs dependencies, checks for a Chromium-based browser, and starts the application. Open http://127.0.0.1:8765. Keep the terminal open while the application is running.
+
+FIRST WORKFLOW
+1. Open the workflow workspace and create or select a workflow.
+2. Define the fields you want in the resulting dataset.
+3. Open Inputs & Connectors to choose a built-in source or build a customer web connector.
+4. For a new connector, open the target website in the inspector, sign in manually if required, inspect representative items, map selectors, validate samples, and save the connector.
+5. Open the collection screen and select one saved source.
+6. Open the browser and manually navigate to the exact conversation or page to capture.
+7. Configure the start and end dates, then start collection.
+8. Review captured items in the inbox before running extraction.
+9. Inspect extracted fields in the Review Desk and export approved records.
+
+AI MODEL (OPTIONAL)
+Model-assisted extraction and connector suggestions require a configured OpenAI-compatible endpoint. A local endpoint can keep processing on your own machine. When using a remote endpoint, selected source content may be sent to that provider. Review its privacy policy before use. Rules-based processing is available for supported workflows.
+
+LOCAL DATA AND PRIVACY
+The application stores its database, workflows, connector definitions, exports, and browser profiles under the local data directory. Browser profiles may contain login sessions. Do not share the data directory or commit it to version control. The current SQLite settings store is not encrypted by the application; protect your OS account and backups.
+
+TROUBLESHOOTING
+- If no browser is detected, install Chromium, Chrome, or Edge for your operating system and restart the app.
+- If the website changes its layout, reopen the connector inspector and validate the selectors against current page samples.
+- If date coverage is uncertain, do not treat the run as complete. Reposition the page and repeat the verification step.
+- Keep the terminal output when reporting a bug, but remove personal content, credentials, tokens, cookies, and private URLs first.
+
+DEVELOPMENT
+Install the dependencies from requirements.txt, install pytest, then run:
+    python -m pytest -q
+
+See README.md, CHANGELOG.md, SECURITY.md, and docs/ for further details.

@@ -1,0 +1,11 @@
+Software Engineer
+A fictional product team is looking for a Python engineer with experience building APIs and maintaining data services.
+Work arrangement: remote
+Experience: 2+ years
+Skills: Python, FastAPI, SQL
+
+Customer Support Specialist
+A fictional software company is hiring a full-time support specialist.
+Work arrangement: hybrid
+Experience: customer communication and issue triage
+Skills: documentation, troubleshooting, written communication

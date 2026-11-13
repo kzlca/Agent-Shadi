@@ -1,0 +1,21 @@
+AGENT SHADI 1.8.37 — SOURCE-AVAILABLE RELEASE
+
+Product focus
+- Local-first data-preparation workbench for turning unstructured source material into structured, reviewable datasets.
+- Multiple input methods: pasted text, supported files, built-in browser collection workflows, and customer-configurable web connectors.
+- Workflow-specific schemas, examples, prompts, deterministic rules, provenance, normalization, quality checks, duplicate review, and human approval.
+- Curated Golden Data is produced through controlled extraction, validation, human review, and export; AI output alone is not treated as ground truth.
+- One manually selected page or channel per browser collection run.
+
+Version
+- The application version is read from the root VERSION file and rendered consistently in the sidebar, static asset cache keys, diagnostics metadata, and health endpoint.
+
+Verification recorded for this source package
+- Python test suite: 350 passed, 8 skipped (browser/Chromium-dependent tests).
+- Python compilation and frontend JavaScript syntax checks are part of the repository CI workflow.
+- Live authenticated collection requires validation on the operator's own browser sessions and current source websites.
+
+License and privacy
+- Source-available under the PolyForm Noncommercial License 1.0.0. This is not an OSI-approved open-source license.
+- Commercial use requires separate written permission; see COMMERCIAL-LICENSING.md.
+- Examples are synthetic. No local database, browser profile, credentials, connector settings, or customer collection archive is included.

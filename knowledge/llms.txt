@@ -1,0 +1,14 @@
+# Agent Shadi Product Knowledge
+
+> A concise map of the product-specific operating knowledge used by Agent Shadi. Retrieve only the sections relevant to the current task.
+
+## Core purpose
+- [Agent purpose](agent-purpose.md): specialist role, user-control boundaries and response behavior.
+- [Studio workflow map](workflow-map.md): dashboard, workflow builder, sources, inbox, extraction, review, cleanup and exports.
+
+## Collection and data operations
+- [Web connectors](web-connectors.md): channel identity, DOM selectors, validation, navigation and persistence.
+- [Collection troubleshooting](collection-troubleshooting.md): evidence-first diagnosis and safe recovery.
+- [Data lifecycle](data-lifecycle.md): raw source messages versus structured extraction records and database counts.
+- [Schema and variables](schema-and-variables.md): field contracts, prompts, types and normalization.
+- [Golden data](golden-data.md): validation, cleanup, deduplication, review and provenance.

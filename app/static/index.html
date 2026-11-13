@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b16"><meta name="color-scheme" content="dark">
+  <meta name="description" content="Agent Shadi — your intelligent data agent for collecting, understanding and structuring information.">
+  <link rel="icon" type="image/svg+xml" href="/static/shadi-icon.svg?v=__APP_VERSION__">
+  <title>Agent Shadi — AI Data Agent Studio</title>
+  <link rel="stylesheet" href="/static/styles.css?v=__APP_VERSION__">
+</head>
+<body class="shadi-app">
+<div class="app-shell">
+  <aside class="sidebar shadi-sidebar" id="sidebar">
+    <div class="brand shadi-brand">
+      <div class="shadi-logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" role="img"><defs><linearGradient id="botGlow" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#4f8cff"/></linearGradient></defs><path d="M32 4v7" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="4" r="3" fill="#d8b4fe"/><rect x="10" y="14" width="44" height="38" rx="15" fill="#17182e" stroke="url(#botGlow)" stroke-width="3"/><rect x="15" y="19" width="34" height="27" rx="10" fill="#080d1d"/><ellipse cx="23" cy="32" rx="4" ry="5" fill="#60a5fa"/><ellipse cx="41" cy="32" rx="4" ry="5" fill="#a78bfa"/><path d="M25 40q7 6 14 0" fill="none" stroke="#c4b5fd" stroke-width="2.5" stroke-linecap="round"/><path d="M10 29H6m52 0h-4" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/><path d="M23 53v5m18-5v5" stroke="#7c8cff" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div><b>Agent <span>Shadi</span></b><small>AI DATA AGENT STUDIO</small></div>
+    </div>
+    <div class="side-label">ACTIVE WORKSPACE</div>
+    <div class="workflow-select-wrap shadi-workflow-wrap"><select id="workflowSelect" aria-label="Active workflow"></select><button id="newWorkflowBtn" class="icon-btn" title="Create workflow">＋</button></div>
+    <nav class="nav shadi-nav" id="mainNav" aria-label="Main navigation">
+      <div class="nav-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="overview"><span class="nav-glyph">⌂</span> Dashboard</button>
+      <button class="nav-item" data-view="builder"><span class="nav-glyph">⌘</span> Workflow Builder <i class="step-dot"></i></button>
+      <button class="nav-item" data-view="sources"><span class="nav-glyph">◎</span> Sources & Collection</button>
+      <button class="nav-item" data-view="inbox"><span class="nav-glyph">▤</span> Dataset Explorer <em id="queueBadge">0</em></button>
+      <div class="nav-label">DATA OPERATIONS</div>
+      <button class="nav-item" data-view="review"><span class="nav-glyph">◉</span> Review Studio <em id="reviewBadge">0</em></button>
+      <button class="nav-item" data-view="cleanup"><span class="nav-glyph">⌁</span> Quality & Duplicates</button>
+      <button class="nav-item" data-view="export"><span class="nav-glyph">⇧</span> Exports & Share</button>
+      <button class="nav-item" data-view="learning"><span class="nav-glyph">✧</span> Corrections Library</button>
+      <div class="nav-label">YOUR AI AGENT</div>
+      <button class="nav-item shadi-agent-link" data-view="agent"><span class="nav-glyph">✳</span> Ask Agent Shadi <em class="agent-beta">AI</em></button>
+      <div class="shadi-side-agent">
+        <div class="mini-bot" aria-hidden="true"><svg viewBox="0 0 100 100"><rect x="17" y="24" width="66" height="56" rx="23" fill="#21224a" stroke="#9c83ff" stroke-width="3"/><rect x="25" y="32" width="50" height="35" rx="13" fill="#080d21"/><ellipse cx="39" cy="49" rx="5" ry="7" fill="#53c8ff"/><ellipse cx="61" cy="49" rx="5" ry="7" fill="#b18bff"/><path d="M40 60q10 8 20 0" fill="none" stroke="#c4b5fd" stroke-width="3" stroke-linecap="round"/><path d="M50 12v12m-4-12h8" stroke="#b18bff" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div><b>I'm here to help.</b><small>Build smarter workflows with Shadi.</small></div>
+        <button class="agent-open" data-nav="agent" aria-label="Open Agent Shadi">↗</button>
+      </div>
+      <div class="nav-label">LOCAL WORKSPACE</div>
+      <div class="local-card shadi-local sidebar-info-item" role="note" aria-label="Private local workspace"><div class="local-icon">⌂</div><div><b>Private workspace</b><small>Stored on this computer</small></div><span class="online-dot"></span></div>
+      <button class="nav-item settings-link" data-view="settings" data-nav="settings"><span class="nav-glyph">⚙</span> Model & Settings</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="version">AGENT SHADI <span>__APP_VERSION__</span></div></div>
+  </aside>
+
+  <main class="main-area shadi-main">
+    <header class="topbar shadi-topbar">
+      <div class="crumb"><button class="mobile-menu" id="mobileMenu">☰</button><span class="crumb-app">Agent Shadi</span><b>/</b><strong id="topWorkflowName">Choose a workflow</strong></div>
+      <div class="top-search"><span>⌕</span><input id="globalSearch" autocomplete="off" placeholder="Search workspace…  Ctrl + K" aria-label="Search workspace"></div>
+      <div class="top-actions"><button class="top-icon diagnostics-trigger" id="openDiagnostics" title="System diagnostics">⌁<span id="diagnosticsCount">0</span></button><span class="connection-pill shadi-model-pill checking" id="modelStatus" role="button" tabindex="0" title="Checking the live model connection. Click to refresh."><i></i> Checking model…</span><button class="top-icon" id="themeToggle" title="Toggle appearance">◐</button><button class="top-icon" data-nav="agent" title="Ask Agent Shadi">✳</button><div class="avatar shadi-avatar">AS</div></div>
+    </header>
+    <div class="content shadi-content" id="content">
+      <section class="view active" id="view-overview"></section>
+      <section class="view" id="view-builder"></section>
+      <section class="view" id="view-sources"></section>
+      <section class="view" id="view-inbox"></section>
+      <section class="view" id="view-review"></section>
+      <section class="view" id="view-cleanup"></section>
+      <section class="view" id="view-export"></section>
+      <section class="view" id="view-learning"></section>
+      <section class="view" id="view-settings"></section>
+      <section class="view" id="view-agent"></section>
+    </div>
+    <footer class="footer shadi-footer"><span>Agent Shadi <span class="footer-dot">●</span> Local-first AI data studio</span><span id="footerHint">Collect · Understand · Structure · Improve</span></footer>
+  </main>
+</div>
+<div class="global-run-monitor" id="globalRunMonitor" aria-live="polite" hidden></div>
+<div class="toast-stack" id="toastStack"></div>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div>
+<script src="/static/app.js?v=__APP_VERSION__"></script>
+</body></html>

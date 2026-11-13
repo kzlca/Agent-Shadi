@@ -1,0 +1,35 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Runtime data and credentials
+data/
+config.json
+.env
+.env.*
+!.env.example
+browser_sessions/
+browser_profiles/
+Collected_InputData_Extractions_Outputs/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# Build / packaging
+build/
+dist/
+*.spec
+*.zip
+*.whl
+*.egg-info/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

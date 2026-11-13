@@ -1,0 +1,13 @@
+Apartment listing
+Area: 120 square metres
+Bedrooms: 2
+Condition: recently renovated
+Location: Example District
+Asking price: 250,000
+
+Detached house listing
+Land area: 300 square metres
+Bedrooms: 3
+Condition: new construction
+Location: Sample Neighborhood
+Asking price: 420,000
