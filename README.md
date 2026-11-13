@@ -92,11 +92,11 @@ You can test extraction on sample content before processing a larger queue. Rule
 
 ### Local-model extraction on an AMD RX 580
 
-A maintainer-reported local test used **Qwen3.5-9B-Q6_K** with `llama.cpp` on an **AMD Radeon RX 580 with 8 GB VRAM**. In that workflow, the maintainer reports **98% fully automated extraction accuracy** on messy Persian-language real-estate channel messages.
+I ran Agent Shadi with **Qwen3.5-9B-Q6_K** through `llama.cpp` on my **AMD Radeon RX 580 with 8 GB VRAM** and reached **98% fully automated extraction accuracy** on messy Persian-language real-estate channel messages.
 
-This is a result from one specific workflow and test collection, not a general performance guarantee. The test-set size and scoring methodology have not yet been published as an independently reproducible benchmark. Accuracy can vary with the source material, schema, extraction instructions, model build, and validation rules; review remains important for consequential datasets.
+That 98% result comes from my own real-world extraction workflow and test collection. It describes this particular setup, not a universal benchmark or a guarantee for every dataset. Results can vary with the source material, schema, extraction instructions, model build, and validation rules; human review remains important for consequential datasets.
 
-Example `llama-server` command used for that setup:
+This is the `llama-server` command I used:
 
 ```bash
 ./llama-server \
@@ -113,7 +113,7 @@ Example `llama-server` command used for that setup:
   2>&1 | tee llama-server-qwen35-4b-thinking.log
 ```
 
-The `-ngl 999` option requests maximum available GPU-layer offload; the layers actually placed on the GPU depend on the llama.cpp backend, driver, and available memory. The server listens locally at `127.0.0.1:8180`.
+The `-ngl 999` option requests maximum available GPU-layer offload; the number of layers actually placed on the GPU depends on the llama.cpp backend, driver, and available memory. The server listens locally at `127.0.0.1:8180`.
 
 ### Review Studio and Terminal Review Desk
 
