@@ -1,10 +1,10 @@
-<div align="center">
+<img width="1409" height="29" alt="image" src="https://github.com/user-attachments/assets/055f5e44-401f-48bd-a2be-a0114b827c84" /><div align="center">
 
 # Agent Shadi
 
-### From messy information to clean, reviewable datasets.
+### From messy information to clean, research-ready datasets.
 
-**A local-first AI data-preparation workbench for turning unstructured source material into structured records, validated tables, and curated Golden Data.**
+**A local AI-powered data-preparation workbench that transforms unstructured source material into structured records, validated tables, and ready-to-use Golden Data. Export results in multiple formats, such as XLSX, for search engines, other applications, and further research.**
 
 [![Version](https://img.shields.io/badge/version-1.8.37-5965f2.svg)](VERSION)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab.svg?logo=python&logoColor=white)](requirements.txt)
@@ -13,7 +13,7 @@
 
 <img src="assets/agent-shadi-dashboard.webp" alt="Agent Shadi dashboard showing the local AI data-preparation workspace" width="100%">
 
-<sub>Agent Shadi dashboard · local-first AI data-preparation workspace</sub>
+<sub>Agent Shadi dashboard · AI data-preparation workspace</sub>
 
 **Collect → Structure → Normalize → Validate → Review → Export**
 
@@ -23,19 +23,15 @@
 
 ## The point of Agent Shadi
 
-Business information is scattered across messages, documents, spreadsheets, portals, and web applications. The content is often duplicated, inconsistent, incomplete, or written in formats that are difficult to analyse.
+In businesses like real estate, valuable information is scattered across messaging platforms, large group chats, and channels where thousands of agents share property listings, daily files, documents, and updates. Much of this information is duplicated, inconsistent, or difficult to search and analyse.
 
-A prompt that returns JSON is not a dependable data pipeline by itself. Teams also need a clear schema, repeatable extraction rules, normalized values, validation, duplicate handling, source traceability, and a way for people to correct mistakes.
+Simply collecting messages or asking AI to return JSON isn't enough. The information needs to be extracted, organized, checked, and prepared for reliable reuse.
 
-**Agent Shadi brings those steps into one local-first workspace.** It helps transform dirty source material into structured, reviewable tabular data for analytics, operations, research, catalog management, CRM workflows, and carefully curated AI datasets.
+Agent Shadi brings the entire process together in one place, from collecting messages to preparing reusable datasets. It transforms messy source material into clean, structured, reviewable datasets that can be used for search systems, analytics, business applications, research, and AI workflows.
 
-Shadi is not just a message collector. Collection is one input stage; the core value is preparing information so that the resulting dataset can be inspected, trusted, and reused.
+Shadi is more than a message collector. Its main purpose is to turn scattered information into data that people can inspect, trust, and reuse.
 
-## What is Golden Data?
-
-**Golden Data** is a curated dataset whose records have been checked against a defined schema, validated, deduplicated where appropriate, and reviewed by a person. Each record should remain traceable to the source it came from.
-
-AI can propose values, but AI output is not automatically ground truth. Shadi lets an operator inspect the original source beside extracted fields, investigate warnings, correct values, and decide which records are ready to become part of a trusted dataset.
+## Golden Data
 
 ```mermaid
 flowchart TD
@@ -48,8 +44,7 @@ flowchart TD
     G --> H[Curated Golden Dataset]
     H --> I[CSV, Excel or JSON]
 ```
-
-The workflow is designed to preserve original content, check extracted values, highlight missing or contradictory information, support duplicate review, record field provenance, and keep human approval in the loop. **Golden Data is a quality outcome—not a claim that an AI model is always right.**
+**Golden Data is a quality outcome—not a claim that an AI model is always right.**
 
 ## More than one way to bring data in
 
@@ -69,32 +64,74 @@ The Universal Web Connector is a connector workbench—not a fixed list of hard-
 
 Each website has its own layout and behaviour, so connectors must be mapped and tested against the actual page. Browser connectors work with browser-accessible web applications; they do not control native desktop applications.
 
-**Collection is operator-directed:** one collection run targets one manually selected channel, conversation, or page. You navigate to the intended location yourself; Shadi does not automatically search for channels or switch between them during a run. This keeps collection scope clear without making collection the centre of the whole product.
+**Collection is operator-directed:** each collection run targets one manually selected channel, conversation, or page. You navigate to the intended location yourself; Shadi does not automatically search for channels or switch between them during a run. Collection can follow the configured direction across the selected date range. For faster processing, you can assist by manually scrolling through the conversation to load additional messages while extraction is running.
 
 ## The data-preparation toolkit
 
-### Workflow-specific schemas
+### Different data, different rules
 
-Define the fields, expected types, required values, extraction instructions, examples, preprocessing, validation behaviour, and collection policy for each dataset. Start with an available profile or create a custom workflow. A property dataset, job dataset, vehicle catalog, supplier list, or internal operational dataset can use different schemas; Shadi does not force everything into the same columns.
+Not all information is the same, so Shadi lets you choose what information to collect and how to organize it.
 
-### AI extraction and deterministic rules
+**For example:**
 
-Connect an OpenAI-compatible chat-completions endpoint, either hosted or local (for example, LM Studio). Shadi can combine:
+- 🚗 **Cars:** You need brand, model, year, price, and mileage.
+- 💼 **Jobs:** You need job title, salary, location, and contact details.
++ 🏠 **Houses:** You need price, location, area, number of rooms, and property type.
 
-- AI extraction for interpreting varied, unstructured language.
-- Schema-constrained output for the fields you define.
-- Input/output examples to demonstrate expected results.
-- Deterministic rules such as regular-expression extraction, value mapping, defaults, numeric transforms, and safe formulas.
-- Rules-only processing for workflows that should not call an LLM.
-- Field provenance showing whether a value came from the model, a rule, a calculation, or a manual correction.
+**🏠 Rental properties**
 
-You can test extraction on sample content before processing a larger queue. Rules-only processing is predictable, but does not provide the same semantic interpretation as a language model.
+For rental listings, Shadi can be configured to extract:
+
+| Field | What it means |
+|---|---|
+| Date | When the listing was posted |
+| Property Type | Apartment, house, villa, etc. |
+| Number of Bedrooms | How many bedrooms the property has |
+| Deposit (million toman) | The amount paid upfront |
+| Monthly Rent (million toman) | The monthly rental payment |
+| Deposit-to-Rent Conversion | Whether the deposit and rent can be converted or negotiated |
+| Full Message | The original message as posted |
+
+**🏡 Properties for sale**
+
+For sale listings, Shadi can use a different set of fields:
+
+| Field | What it means |
+|---|---|
+| Date | When the listing was posted |
+| Property Type | Apartment, house, villa, etc. |
+| Address | Where the property is located |
+| Area (m²) | The property's size in square meters |
+| Number of Bedrooms | How many bedrooms the property has |
+| Total Price (million toman) | The full asking price |
+| Price per Square Meter (million toman) | The price for each square meter |
+| Full Message | The original message as posted |
+
+Shadi uses a separate set of rules for each type of project. You can start with an existing template or create your own by choosing the fields you need, explaining what to look for, and setting rules for checking the results.
+This way, Shadi knows what information to find, how to organize it, and what to do when something is missing or incorrect.
+
+### How Shadi prepares your data
+
+Connect Shadi to an AI model, either running on your own computer or through an online service. You can use a service such as LM Studio to run a local model.
+
+Shadi can then prepare your data in several ways:
+
+- **Understand messages:** AI reads messages written in everyday language and finds the information you need, even when people write things differently.
+- **Follow your table structure:** You choose the columns Shadi should fill in based on your project. For real estate, you might need property type, address, area, and number of bedrooms for properties for sale, or property type, bedrooms, deposit, and monthly rent for rental listings. For other projects, you can define completely different fields.
+- **Learn from examples:** You provide sample messages and show Shadi what the correct extracted result should look like.
+- **Apply fixed rules:** Shadi can correct or convert information using rules you define. For example, it can convert Persian numbers to English digits, standardize prices, and fix common writing differences. When working with English-language messages, extraction may be more straightforward and require fewer language-specific corrections. Other languages may need additional rules and tuning depending on the model.
+- **Work without AI when possible:** Some information can be extracted using simple rules, without asking an AI model.
+- **Track where information came from:** You can see whether a value was extracted by AI, filled in by a rule, calculated automatically, or corrected by a person.
+
+You can combine these methods to build a workflow that fits your data and the way you want it prepared.
 
 ### Local-model extraction on an AMD RX 580
 
-I ran Agent Shadi with **Qwen3.5-9B-Q6_K** through `llama.cpp` on my **AMD Radeon RX 580 with 8 GB VRAM** and reached **98% fully automated extraction accuracy** on messy Persian-language real-estate channel messages.
+I ran Agent Shadi with **Qwen3.5-9B-Q6_K** through `llama.cpp` on my **AMD Radeon RX 580 with 8 GB VRAM** and achieved **98% fully automated extraction accuracy** on messy Persian-language real-estate channel messages.
 
-That 98% result comes from my own real-world extraction workflow and test collection. It describes this particular setup, not a universal benchmark or a guarantee for every dataset. Results can vary with the source material, schema, extraction instructions, model build, and validation rules; human review remains important for consequential datasets.
+Reaching this result took many rounds of testing and improvement. I repeatedly adjusted the extraction prompts, expanded correction lists, refined instructions, and tuned other parts of the workflow. These adjustments were important because extraction quality depends on more than the model itself. The language being processed, the selected model, the wording of the prompts, and the correction and validation rules all influence the results.
+
+**The 98% figure comes from my own real-world extraction workflow and test collection.** It represents this particular setup, not a universal benchmark or a guarantee for other datasets. Different languages, source materials, models, and configurations may require their own testing and tuning. Human review is still important, especially when accuracy matters.
 
 This is the `llama-server` command I used:
 
@@ -113,7 +150,11 @@ This is the `llama-server` command I used:
   2>&1 | tee llama-server.log
 ```
 
-The -ngl 999 option requests maximum available GPU layer offload, though the number of layers actually placed on the GPU depends on the llama.cpp backend, driver, and available memory. The server listens locally at 127.0.0.1:8180. Depending on message length, a context window size of 8192 has been more than enough for processing one message at a time in my setup, unless you want longer assistant chats with the built-in helper agent Shadi AI—in which case you can adjust the value accordingly in LM Studio, llama.cpp, or whatever inference tool you prefer.
+The `-ngl 999` option requests maximum available GPU layer offloading, although the actual number of layers placed on the GPU depends on the `llama.cpp` backend, driver, and available VRAM.
+
+The server listens locally at `127.0.0.1:8180`. In my setup, a context window of **8192 tokens** has been sufficient for processing one message at a time. However, the required context size depends on more than the message length. It also depends on the extraction prompt, schema instructions, examples, and any additional information sent to the model.
+
+If you use longer prompts, more examples, larger messages, or want longer conversations with the built-in helper agent **Shadi AI**, you may need a larger context window. You can adjust this setting in LM Studio, `llama.cpp`, or your preferred inference tool.
 
 ### Review Studio and Terminal Review Desk
 
