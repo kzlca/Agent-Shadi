@@ -71,6 +71,11 @@ def server_is_up() -> bool:
 def ensure_server() -> None:
     if server_is_up():
         return
+    if getattr(sys, "frozen", False):
+        raise RuntimeError(
+            "The packaged Review Desk requires the Agent Shadi service "
+            "started by PaniVerse. Close and relaunch PaniVerse, then try again."
+        )
     DATA.mkdir(parents=True, exist_ok=True)
     log_path = DATA / "review-terminal-server.log"
     log = open(log_path, "a", encoding="utf-8")

@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 BASE = Path.cwd()
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(os.environ.get("AGENT_SHADI_RESOURCE_DIR") or Path(__file__).resolve().parents[2]).resolve()
 APP_DIR = PROJECT_ROOT / "app"
 COLLECTOR_DIR = APP_DIR / "collectors"
 # The runner is launched as a standalone script with a per-workflow working

@@ -28,7 +28,7 @@ from app.agent_knowledge import retrieve_agent_knowledge
 from app.version import __version__
 from app.automation.collector_runner import read_combined_messages
 
-ROOT=Path(__file__).resolve().parents[1]
+ROOT=Path(os.environ.get("AGENT_SHADI_RESOURCE_DIR") or Path(__file__).resolve().parents[1]).resolve()
 DATA=Path(os.getenv("STRUCTURA_FLOW_DATA", ROOT/"data")).resolve()
 DATA.mkdir(parents=True,exist_ok=True)
 if os.name=="posix":
@@ -538,7 +538,10 @@ def _review_terminal_launch_spec(handshake_file: str | None = None) -> tuple[lis
     if not Path(ROOT / "review_tui.py").is_file():
         raise RuntimeError("The Review Desk interface is missing. Reinstall the Agent Shadi package.")
 
-    args = [python, "-u", launcher]
+    if getattr(sys, "frozen", False):
+        args = [python, "--paniverse-mode=review"]
+    else:
+        args = [python, "-u", launcher]
     if handshake_file:
         args.extend(["--handshake-file", handshake_file])
     if os.name == "nt":
@@ -2360,7 +2363,10 @@ def collector_worker(wid,run_id,opts):
         try: resume_file.unlink(missing_ok=True)
         except OSError: pass
         enable_inspector_environment(env, resume_file=resume_file)
-        cmd=[sys.executable,"-u",str(COLLECTOR_RUNNER),"--platform",opts["platform"],"--start-date",opts["start_date"],"--end-date",opts["end_date"]]
+        if getattr(sys, "frozen", False):
+            cmd=[sys.executable,"--paniverse-mode=collector","--platform",opts["platform"],"--start-date",opts["start_date"],"--end-date",opts["end_date"]]
+        else:
+            cmd=[sys.executable,"-u",str(COLLECTOR_RUNNER),"--platform",opts["platform"],"--start-date",opts["start_date"],"--end-date",opts["end_date"]]
         proc=subprocess.Popen(cmd,cwd=run_dir,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding="utf-8",errors="replace",env=env)
         with LOCK: COLLECT_STATE[wid]={"status":"running","phase":"starting","phase_message":"Launching the browser collector…","platform":opts.get("platform"),"channel":None,"logs":[],"run_id":run_id,"started_at":now()}
         marker=None

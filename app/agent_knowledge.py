@@ -5,12 +5,14 @@ This avoids placing the whole manual into an 8k local-model context window.
 """
 from __future__ import annotations
 
+import os
+
 import math
 import re
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get("AGENT_SHADI_RESOURCE_DIR") or Path(__file__).resolve().parents[1]).resolve()
 KNOWLEDGE_DIR = ROOT / "knowledge"
 TOKEN_RE = re.compile(r"[\w\u0600-\u06ff]+", re.UNICODE)
 
