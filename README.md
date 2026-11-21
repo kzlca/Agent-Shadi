@@ -21,13 +21,15 @@
 
 ## The point of Agent Shadi
 
-In businesses like real estate, valuable information is scattered across messaging platforms, large group chats, and channels where thousands of agents share property listings, daily files, documents, and updates. Much of this information is duplicated, inconsistent, or difficult to search and analyse.
+Businesses and organizations collect information from many different places: messaging platforms, large group chats, channels, websites, documents, spreadsheets, and other sources. This information often comes in different formats, contains duplicates, and is difficult to search, organize, or analyse.
 
-Simply collecting messages or asking AI to return JSON isn't enough. The information needs to be extracted, organized, checked, and prepared for reliable reuse.
+Real estate is one example. Property agents share thousands of listings, daily files, prices, addresses, and updates across messaging platforms. But the same problem exists in many other fields, from job listings and vehicle catalogs to supplier records and internal business data.
 
-Agent Shadi brings the entire process together in one place, from collecting messages to preparing reusable datasets. It transforms messy source material into clean, structured, reviewable datasets that can be used for search systems, analytics, business applications, research, and AI workflows.
+Simply collecting messages or asking AI to return JSON isn't enough. Information needs to be extracted, organized, checked, and prepared for reliable reuse.
 
-Shadi is more than a message collector. Its main purpose is to turn scattered information into data that people can inspect, trust, and reuse.
+**Agent Shadi brings these steps together in one place.** It collects information from selected sources and transforms unstructured content into clean, structured, reviewable datasets that can be used for search systems, analytics, business applications, research, and AI workflows.
+
+Shadi is more than a message collector. Its purpose is to turn scattered information into data that people can inspect, trust, and reuse across different industries and workflows.
 
 ## Golden Data
 
