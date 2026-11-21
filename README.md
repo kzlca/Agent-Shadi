@@ -1,5 +1,3 @@
-<img width="1409" height="29" alt="image" src="https://github.com/user-attachments/assets/055f5e44-401f-48bd-a2be-a0114b827c84" /><div align="center">
-
 # Agent Shadi
 
 ### From messy information to clean, research-ready datasets.
