@@ -113,8 +113,7 @@ This is the `llama-server` command I used:
   2>&1 | tee llama-server.log
 ```
 
-The `-ngl 999` option requests maximum available GPU-layer offload; the number of layers actually placed on the GPU depends on the llama.cpp backend, driver, and available memory. The server listens locally at `127.0.0.1:8180`.
-Depend on messages context window size 8192 was more than enough to process one message at the time for me, unless you want to get longer help chats from built-in helper agent Shadi AI you can can change the value depend on that On your LMStudio or llama or what ever.
+The -ngl 999 option requests maximum available GPU layer offload, though the number of layers actually placed on the GPU depends on the llama.cpp backend, driver, and available memory. The server listens locally at 127.0.0.1:8180. Depending on message length, a context window size of 8192 has been more than enough for processing one message at a time in my setup, unless you want longer assistant chats with the built-in helper agent Shadi AI—in which case you can adjust the value accordingly in LM Studio, llama.cpp, or whatever inference tool you prefer.
 
 ### Review Studio and Terminal Review Desk
 
