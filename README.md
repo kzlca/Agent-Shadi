@@ -94,16 +94,19 @@ For rental listings, Shadi can be configured to extract:
 
 For sale listings, Shadi can use a different set of fields:
 
-| Field | What it means |
-|---|---|
-| Date | When the listing was posted |
-| Property Type | Apartment, house, villa, etc. |
-| Address | Where the property is located |
-| Area (m²) | The property's size in square meters |
-| Number of Bedrooms | How many bedrooms the property has |
-| Total Price (million toman) | The full asking price |
-| Price per Square Meter (million toman) | The price for each square meter |
-| Full Message | The original message as posted |
+<p align="center">
+  <small>
+    Date&nbsp;&nbsp; · &nbsp;&nbsp;Property Type&nbsp;&nbsp; · &nbsp;&nbsp;Address&nbsp;&nbsp; · &nbsp;&nbsp;Area (m²)&nbsp;&nbsp; · &nbsp;&nbsp;Bedrooms&nbsp;&nbsp; · &nbsp;&nbsp;Total Price&nbsp;&nbsp; · &nbsp;&nbsp;Price per Square Meter
+  </small>
+</p>
+
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/9aa4977e-bbb6-4ce9-993c-2af876d7e6e7"
+    width="800"
+    alt="Example of extracted real estate sale listings in Excel"
+  />
+</p>
 
 Shadi uses a separate set of rules for each type of project. You can start with an existing template or create your own by choosing the fields you need, explaining what to look for, and setting rules for checking the results.
 This way, Shadi knows what information to find, how to organize it, and what to do when something is missing or incorrect.
